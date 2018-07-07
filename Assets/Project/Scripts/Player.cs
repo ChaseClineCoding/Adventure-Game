@@ -5,11 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     [Header("Visuals")]
     public GameObject model;
+    public float rotatingSpeed = 2f;
 
     [Header("Movement")]
     public float movingVelocity;
     public float jumpVelocity;
-    public float rotatingSpeed = 2f;
+
+    [Header("Equipment")]
+    public Sword sword;
 
     private bool canJump;
     private Rigidbody playerRigidbody;
@@ -93,6 +96,12 @@ public class Player : MonoBehaviour {
                 playerRigidbody.velocity.x,
                 jumpVelocity,
                 playerRigidbody.velocity.z);
+        }
+
+        // Check for attack
+        if (Input.GetKeyDown("z"))
+        {
+            sword.Attack();
         }
     }
 }
